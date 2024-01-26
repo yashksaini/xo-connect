@@ -10,11 +10,11 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import { v4 as uuidv4 } from "uuid";
 import { Room, ProfileVisit, Profile } from "./schemas/schemas.js";
-import { fileURLToPath } from "url";
-import { dirname, join } from "path";
+// import { fileURLToPath } from "url";
+// import { dirname, join } from "path";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 
 const app = express();
 const httpServer = createServer(app);
@@ -376,7 +376,7 @@ app.get("/check-server-status", (req, res) => {
 
   res.json({ active: isServerActive });
 });
-app.use(express.static(join(__dirname, "public")));
+// app.use(express.static(join(__dirname, "public")));
 httpServer.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
