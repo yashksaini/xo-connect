@@ -20,7 +20,7 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: true, // Allow requests from this origin
+    origin: 'https://xo-connect.netlify.app/', // Allow requests from this origin
     methods: ["GET", "POST"],
   },
 });
@@ -56,7 +56,7 @@ app.use(
 // To initialize CORS
 app.use(
   cors({
-    origin: true,
+    origin: 'https://xo-connect.netlify.app/',
     methods: ["GET", "POST", "PUT", "OPTIONS", "HEAD"],
     credentials: true,
   })
