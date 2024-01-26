@@ -17,7 +17,6 @@ const io = new Server(httpServer, {
   cors: {
     origin: true, // Allow requests from this origin
     methods: ["GET", "POST"],
-    credentials: true,
   },
 });
 
@@ -30,6 +29,9 @@ const password = process.env.DB_PASSWORD;
 
 const URL = `mongodb+srv://${username}:${password}@cluster0.xwisexr.mongodb.net/?retryWrites=true&w=majority`;
 Connection(username, password);
+
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 
 app.use(
@@ -41,8 +43,7 @@ app.use(
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days in milliseconds
       httpOnly: true,
-      secure: true,
-      sameSite: "None",
+      secure: false,
     },
   })
 );
@@ -55,9 +56,6 @@ app.use(
     credentials: true,
   })
 );
-
-app.use(bodyParser.json({ limit: "50mb" }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 import Routes from "./routes/routes.js";
 app.use("/", Routes);
