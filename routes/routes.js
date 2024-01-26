@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get("/auth", function (req, res) {
   req.session.userData ? res.send(req.session.userData) : res.send(false);
+  console.log(req.session);
 });
 router.post("/logout", (req, res) => {
   req.session.destroy((err) => {
