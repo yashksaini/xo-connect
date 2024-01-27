@@ -11,12 +11,6 @@ import { Server } from "socket.io";
 import { Room, Profile } from "./schemas/schemas.js";
 import { initializeSocket } from "./socket/socket.js";
 
-import { fileURLToPath } from "url";
-import { dirname, join } from "path";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
 // Created a list of new logged in users
 const activeUsers = new Set();
 const rooms = new Map();
@@ -189,8 +183,6 @@ app.get("/check-server-status", (req, res) => {
 
   res.json({ active: isServerActive });
 });
-
-app.use(express.static(join(__dirname, "public")));
 
 httpServer.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
