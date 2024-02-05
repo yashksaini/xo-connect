@@ -5,7 +5,7 @@ import { ProfileVisit } from "../schemas/schemas.js";
 export function initializeSocket(io, activeUsers, rooms) {
   io.on("connection", (socket) => {
     io.emit("activeUsers", () => {}, Array.from(activeUsers));
-
+    console.log("Active Users Listing");
     socket.on("login", async (userData) => {
       const user = {
         userId: userData.id,
