@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { isPlayerInRoom, handleGameCompletion } from "../index.js";
 import { ProfileVisit } from "../schemas/schemas.js";
 
+// Main function that contain all the sockets
 export function initializeSocket(io, activeUsers, rooms) {
   io.on("connection", (socket) => {
     io.emit("activeUsers", () => {}, Array.from(activeUsers));
