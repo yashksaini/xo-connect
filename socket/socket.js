@@ -34,7 +34,7 @@ export function initializeSocket(io, activeUsers, rooms) {
       }
       io.emit("activeUsers", Array.from(activeUsers));
     });
-
+    // Used when user diconnects
     socket.on("disconnect", () => {
       // Find the user object in activeUsers and remove it
       const disconnectedUserId = socket.id;
